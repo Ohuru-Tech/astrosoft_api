@@ -37,7 +37,7 @@ public class AstrosoftController {
         return horoscope.getResult();
     }
 
-    @PostMapping("/horscope")
+    @PostMapping("/horoscope")
     HoroscopeResult horoscope(AstroData astroData) {
 
         logger.info("Got request for horoscope ");
