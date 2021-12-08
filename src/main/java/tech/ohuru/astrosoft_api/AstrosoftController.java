@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class AstrosoftController {
@@ -26,9 +27,9 @@ public class AstrosoftController {
     }
 
     @PostMapping("/horoscopeTest/{featureSetString}")
-    HoroscopeResult horoscopeTest(AstroData astroData, @PathVariable String featureSetString) {
+    HoroscopeResult horoscopeTest(@RequestBody AstroData astroData, @PathVariable String featureSetString) {
 
-        logger.debug("Got request for horoscope for feature set : " + featureSetString);
+        logger.info("Got request for horoscope for feature set : " + featureSetString);
 
         Horoscope horoscope = new Horoscope(astroData);
         FeatureSet featureSet = FeatureSet.valueOf(featureSetString);
@@ -38,7 +39,7 @@ public class AstrosoftController {
     }
 
     @PostMapping("/horoscope")
-    HoroscopeResult horoscope(AstroData astroData) {
+    HoroscopeResult horoscope(@RequestBody AstroData astroData) {
 
         logger.info("Got request for horoscope ");
 
@@ -52,7 +53,7 @@ public class AstrosoftController {
     }
 
     @PostMapping("/panchang")
-    PanchangResult panchang(AstroData astroData) {
+    PanchangResult panchang(@RequestBody AstroData astroData) {
 
         logger.debug("Got request for panchang");
 
